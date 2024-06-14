@@ -5,8 +5,6 @@
 #include <WiFiManager.h>
 SoftwareSerial mySerial(1, 3); 
 
-// const char* ssid = "trungnhan";
-// const char* password = "nttt123456";
 const char* mqttServer = "210.86.239.240";
 // const int mqttPort = 8080;
 WiFiManager wifiManager;
@@ -29,12 +27,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
   if (memcmp(payload,"itv=",4) == 0) itv = (payload[4] - 0x30) * 1000;
 }
-
-// void setup_wifi() {
-//   delay(10);
-//   WiFi.mode(WIFI_STA);
-//   WiFi.begin(ssid, password);
-// }
 
 void reconnect() {
   while (!client.connected()) {
